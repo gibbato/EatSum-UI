@@ -26,7 +26,7 @@ const Card = (props) => {
 const styles = StyleSheet.create({
          card: {                           // This is the view that contains the image
           width: '95%',
-          height: '70%',
+          aspectRatio: .75,
           borderRadius: 10,
           shadowColor: '#000',
           shadowOffset: {
