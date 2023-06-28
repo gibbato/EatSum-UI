@@ -3,7 +3,7 @@ import { Text, View, Image, ImageBackground, StyleSheet } from 'react-native';
 
 const Card = (props) => {
     
-    const {name, image, bio} = props.user;
+    const {name, image, bio} = props.restaurant;
 
     return (
         <View style={styles.card}>

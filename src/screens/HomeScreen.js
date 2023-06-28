@@ -113,12 +113,12 @@ const HomeScreen = () => {
       {nextRestaurant && (
       <View style={styles.nextCardContainer}>
         <Animated.View style={[styles.animatedCard, nextCardStyle]}>
-        <Card user={nextRestaurant} />
-          <Image 
+        <Card restaurant={nextRestaurant} />
+          <Animated.Image 
            source={Like} 
            style={[styles.like, {left: 10}, likeStyle]}
              resizeMode="contain" /> 
-          <Image
+          <Animated.Image
            source={Nope}
            style={[styles.like, {right: 10}, nopeStyle]}
              resizeMode="contain"/>
@@ -130,7 +130,7 @@ const HomeScreen = () => {
       <GestureHandlerRootView>
         <PanGestureHandler onGestureEvent={gestureHandler}>
           <Animated.View style={[styles.animatedCard, cardStyle]}>
-            <Card user={currentRestaurant} />
+            <Card restaurant={currentRestaurant} />
           </Animated.View>
         </PanGestureHandler>
       </GestureHandlerRootView>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   nextCardContainer: {
     ...StyleSheet.absoluteFillObject,
-    
+    height: '80%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     zIndex: 1,
-    elevation: 1,
+    
   }
   
 });
