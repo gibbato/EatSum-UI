@@ -7,15 +7,12 @@ const Card = (props) => {
 
     return (
         <View style={styles.card}>
-        {/* ImageBackground component to display the background image */}
         <ImageBackground
           source={{ uri: image }}
           style={styles.image}
         >
           <View style={styles.cardInner}>
-            {/* Text component to display the name */}
             <Text style={styles.name}>{name}</Text>
-            {/* Text component to display the bio */}
             <Text style={styles.bio}>{bio}</Text>
           </View>
         </ImageBackground>
@@ -25,9 +22,10 @@ const Card = (props) => {
 
 const styles = StyleSheet.create({
          card: {                           // This is the view that contains the image
-          width: '95%',
+          width: '100%',
           aspectRatio: .75,
           borderRadius: 10,
+          backgroundColor: '#fefefe',
           shadowColor: '#000',
           shadowOffset: {
             width: 0,
@@ -37,14 +35,14 @@ const styles = StyleSheet.create({
           shadowRadius: 6.68,
           elevation: 11,
         },
-        image: {                         // This is the image  
+        image: {                       
           width: '100%',
           height: '100%',
           borderRadius: 10,
           overflow: 'hidden',
           justifyContent: 'flex-end',   // Align the content at the bottom of the image
         },
-        cardInner: {                   // This is the view that contains the name and bio
+        cardInner: {                   
           padding: 10,
         },
         name: {                       
