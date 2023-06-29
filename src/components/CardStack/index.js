@@ -24,26 +24,31 @@ const SWIPE_VELOCITY = 800;            // pixels per second
 
 const CardStack = (props) => {
 
- const { data, renderItem, swipeLeft, swipeRight } = props;
+ const { data, renderItem, swipeLeft, swipeRight } = props;             // data is the array of restaurants, renderItem is the function that renders the card, swipeLeft and swipeRight are the functions that are called when the card is swiped left or right
 
-  const [currentIndex, setCurrentIndex] = useState(0);                
+  const [currentIndex, setCurrentIndex] = useState(0);                 
   const [nextIndex, setNextIndex] = useState(currentIndex + 1);
 
   const currentRestaurant = data[currentIndex];
   const nextRestaurant = data[nextIndex];
 
-  const {width: screenWidth} = useWindowDimensions();
+  const { width: screenWidth } = useWindowDimensions();
+ 
+
 
   const hiddenTranslateX = 2 * screenWidth;
 
+
   const translateX = useSharedValue(0);
-  const rotate = useDerivedValue(() => interpolate(
+ 
+
+  const rotate = useDerivedValue(() => interpolate(             // maps card displacement to card rotation
     translateX.value,
      [0, hiddenTranslateX], 
      [0, ROTATION]) + 'deg',
   );
 
-  const cardStyle = useAnimatedStyle(() => ({
+  const cardStyle = useAnimatedStyle(() => ({                // maps card displacement to card rotation and displacement
     transform: [
       {
         translateX: translateX.value,
@@ -54,7 +59,7 @@ const CardStack = (props) => {
     ],
   }));
   
-  const nextCardStyle = useAnimatedStyle(() => ({               // maps card displacement to scale and opacity
+  const nextCardStyle = useAnimatedStyle(() => ({               // maps card displacement to background stack scale and opacity
     transform: [
       {
         scale: interpolate(
@@ -63,6 +68,7 @@ const CardStack = (props) => {
           [1, 0.9, 1]
         ),
       },
+    
     ],
     opacity: interpolate(
       translateX.value,
@@ -71,23 +77,25 @@ const CardStack = (props) => {
     ),
   }));
 
-  const likeStyle = useAnimatedStyle(() => ({
+  
+
+  const likeStyle = useAnimatedStyle(() => ({           // maps card displacement to 'like' opacity
     opacity: interpolate(translateX.value, [0, hiddenTranslateX / 5], [0, 1]),
   }));
 
-  const nopeStyle = useAnimatedStyle(() => ({
+  const nopeStyle = useAnimatedStyle(() => ({           // maps card displacement to 'nope' opacity
     opacity: interpolate(translateX.value, [0, -hiddenTranslateX / 5], [0, 1]),
   }));
   
 
   const gestureHandler = useAnimatedGestureHandler({
-    onStart: (_, context) => {
+    onStart: (_, context) => {                        // stores the initial position of touch
       context.startX = translateX.value;
     },
-    onActive: (event, context) => {
+    onActive: (event, context) => {                   // updates the position of touch  
       translateX.value = context.startX + event.translationX;
     },
-    onEnd: (event) => {
+    onEnd: (event) => {                              // determines whether to swipe card off screen or recenter. also determines whether to call swipeLeft or swipeRight
         if (Math.abs(event.velocityX) < SWIPE_VELOCITY) {
             translateX.value = withSpring(0);
             return;
@@ -98,7 +106,7 @@ const CardStack = (props) => {
           () => runOnJS(setCurrentIndex)(currentIndex + 1),
         );
 
-        const swipe = event.velocityX > 0 ? swipeRight : swipeLeft;
+        const swipe = event.velocityX > 0 ? swipeRight : swipeLeft;     // if velocity is positive, swipeRight is called. if velocity is negative, swipeLeft is called
         swipe && runOnJS(swipe)(currentRestaurant);
 
       }
@@ -106,7 +114,7 @@ const CardStack = (props) => {
 
   });
 
-  useEffect(() => {
+  useEffect(() => {                          // resets the card stack when the currentIndex changes
     translateX.value = 0;
     setNextIndex(currentIndex + 1);
   }, [currentIndex]);
@@ -117,7 +125,7 @@ const CardStack = (props) => {
     <View style={styles.root}>
       {nextRestaurant && (
       <View style={styles.nextCardContainer}>
-        <Animated.View style={[styles.animatedCard, nextCardStyle]}>
+        <Animated.View style={[styles.animatedCard, nextCardStyle]}>   
         {renderItem({ item: nextRestaurant })}
         <Animated.Image 
            source={Like} 
