@@ -5,6 +5,8 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import users from '../../assets/data/users';
+import restaurantInfo from '../../assets/data/restaurantInfo';
+
 
 import  Card  from '../components/RestaurantCard';
 import  CardStack  from '../components/CardStack';
@@ -16,12 +18,7 @@ const SWIPE_VELOCITY = 800;            // pixels per second
 
 const HomeScreen = () => {
 
-  const poop = {
-    name: 'restaurant name',
-    cuisineType: 'food type',
-    address: '123 food way',
-    reviews: ['Great!', 'ight', 'pretty bad ):']
-  }
+
 
 
   const swipeLeft = () => {
@@ -34,19 +31,18 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.pageContainer}>
-    <CardStack data={users} renderItem={({ item }) => (
-       <View>
-         <Card restaurant={item}   
-           swipeLeft={swipeLeft}          
-           swipeRight={swipeRight}
-        />
-               <InfoCard place={poop}/>
-
-      </View>
-  )}
-    />   
-
-  </View>
+      <CardStack
+        data={users}
+        renderItem={({ item }) => (
+          <View>
+            <Card restaurant={item} swipeLeft={swipeLeft} swipeRight={swipeRight} />
+          </View>
+        )}
+        restaurants={restaurantInfo}
+        renderInfoCard={({ item }) => 
+        <InfoCard restaurant={item} />}
+      />
+    </View>
   );
 };
 
@@ -61,3 +57,9 @@ const styles = StyleSheet.create({
 
 export default HomeScreen;
 
+
+/*
+restaurants={restaurantInfo}
+        renderInfoCard={({ item }) => 
+        <InfoCard restaurant={item} />}
+        */

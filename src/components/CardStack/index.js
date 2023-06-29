@@ -24,13 +24,14 @@ const SWIPE_VELOCITY = 800;            // pixels per second
 
 const CardStack = (props) => {
 
- const { data, renderItem, swipeLeft, swipeRight } = props;             // data is the array of restaurants, renderItem is the function that renders the card, swipeLeft and swipeRight are the functions that are called when the card is swiped left or right
+ const { data, restaurants, renderItem, renderInfoCard, swipeLeft, swipeRight } = props;             // data is the array of restaurants, renderItem is the function that renders the card, swipeLeft and swipeRight are the functions that are called when the card is swiped left or right
 
   const [currentIndex, setCurrentIndex] = useState(0);                 
   const [nextIndex, setNextIndex] = useState(currentIndex + 1);
 
   const currentRestaurant = data[currentIndex];
   const nextRestaurant = data[nextIndex];
+
 
   const { width: screenWidth } = useWindowDimensions();
  
@@ -77,6 +78,20 @@ const CardStack = (props) => {
     ),
   }));
 
+  const infoCardStyle = useAnimatedStyle(() => ({
+    transform: [
+      {
+        translateY: interpolate(
+          translateX.value,
+          [-hiddenTranslateX, 0, hiddenTranslateX],
+          [screenWidth * 2, 0, screenWidth * 2]
+        ),
+      },
+    ],
+  }));
+
+
+
   
 
   const likeStyle = useAnimatedStyle(() => ({           // maps card displacement to 'like' opacity
@@ -94,10 +109,12 @@ const CardStack = (props) => {
     },
     onActive: (event, context) => {                   // updates the position of touch  
       translateX.value = context.startX + event.translationX;
+      
     },
     onEnd: (event) => {                              // determines whether to swipe card off screen or recenter. also determines whether to call swipeLeft or swipeRight
         if (Math.abs(event.velocityX) < SWIPE_VELOCITY) {
             translateX.value = withSpring(0);
+            
             return;
         }
         translateX.value = withSpring(
@@ -147,6 +164,11 @@ const CardStack = (props) => {
         </PanGestureHandler>
       </GestureHandlerRootView>
   )}
+   {currentRestaurant && (
+        <Animated.View style={[styles.animatedInfoCard, infoCardStyle]}>
+          {renderItem({ item: currentRestaurant })}
+        </Animated.View>
+      )}
     </View>
   );
 };
@@ -155,7 +177,7 @@ const CardStack = (props) => {
 
 const styles = StyleSheet.create({
   root: {                   // This is the view that contains the card  
-    justifyContent: 'center',
+    justifyContent: 'end',
     alignItems: 'center',
     width: '100%',
     flex: 1,
@@ -163,7 +185,7 @@ const styles = StyleSheet.create({
   animatedCard: {
     width: '90%',
     height: '70%',
-    justifyContent: 'center',
+    justifyContent: 'end',
     alignItems: 'center',
   },
   nextCardContainer: {
@@ -172,6 +194,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  animatedInfoCard: {
+    width: '90%',
+    justifyContent: 'start',
+  },
+
   like: {
     width: 150,
     height: 150,
@@ -186,4 +213,3 @@ const styles = StyleSheet.create({
 
 
 export default CardStack;
-
