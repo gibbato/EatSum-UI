@@ -24,7 +24,7 @@ const SWIPE_VELOCITY = 800;            // pixels per second
 
 const CardStack = (props) => {
 
- const { data, restaurants, renderItem, renderInfoCard, swipeLeft, swipeRight } = props;             // data is the array of restaurants, renderItem is the function that renders the card, swipeLeft and swipeRight are the functions that are called when the card is swiped left or right
+ const { data, restaurants, renderCard, renderInfoCard, swipeLeft, swipeRight } = props;             // data is the array of restaurants, renderItem is the function that renders the card, swipeLeft and swipeRight are the functions that are called when the card is swiped left or right
 
   const [currentIndex, setCurrentIndex] = useState(0);                 
   const [nextIndex, setNextIndex] = useState(currentIndex + 1);
@@ -143,7 +143,7 @@ const CardStack = (props) => {
       {nextRestaurant && (
       <View style={styles.nextCardContainer}>
         <Animated.View style={[styles.animatedCard, nextCardStyle]}>   
-        {renderItem({ item: nextRestaurant })}
+        {renderCard({ item: nextRestaurant })}
         <Animated.Image 
            source={Like} 
            style={[styles.like, {left: 10}, likeStyle]}
@@ -159,14 +159,14 @@ const CardStack = (props) => {
       <GestureHandlerRootView>
         <PanGestureHandler onGestureEvent={gestureHandler}>
           <Animated.View style={[styles.animatedCard, cardStyle]}>
-            {renderItem({ item: currentRestaurant })}
+            {renderCard({ item: currentRestaurant })}
           </Animated.View>
         </PanGestureHandler>
       </GestureHandlerRootView>
   )}
    {currentRestaurant && (
         <Animated.View style={[styles.animatedInfoCard, infoCardStyle]}>
-          {renderItem({ item: currentRestaurant })}
+          {renderInfoCard({ item: currentRestaurant })}
         </Animated.View>
       )}
     </View>
@@ -177,7 +177,7 @@ const CardStack = (props) => {
 
 const styles = StyleSheet.create({
   root: {                   // This is the view that contains the card  
-    justifyContent: 'end',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     width: '100%',
     flex: 1,
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   animatedCard: {
     width: '90%',
     height: '70%',
-    justifyContent: 'end',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   nextCardContainer: {

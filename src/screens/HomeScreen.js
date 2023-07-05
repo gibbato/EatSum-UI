@@ -33,7 +33,7 @@ const HomeScreen = () => {
     <View style={styles.pageContainer}>
       <CardStack
         data={users}
-        renderItem={({ item }) => (
+        renderCard={({ item }) => (
           <View>
             <Card restaurant={item} swipeLeft={swipeLeft} swipeRight={swipeRight} />
           </View>

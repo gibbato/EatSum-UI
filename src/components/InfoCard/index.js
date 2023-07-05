@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const InfoCard = ({ props }) => {
-  const { name, cuisineType, address, reviews } = props.restaurant;
+const InfoCard = ({ restaurant }) => {
+  const { name, cuisineType, address, reviews } = restaurant;
 
   return (
     <View style={styles.container}>
@@ -26,9 +26,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  info: {
+  cuisineType: {
     fontSize: 16,
     marginBottom: 4,
+  },
+  address: {
+    fontSize: 16,
   },
   reviewsContainer: {
     marginTop: 16,
