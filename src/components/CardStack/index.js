@@ -31,6 +31,7 @@ const CardStack = (props) => {
 
   const currentRestaurant = data[currentIndex];
   const nextRestaurant = data[nextIndex];
+  const restaurantInfo = restaurants[currentIndex];
 
 
   const { width: screenWidth } = useWindowDimensions();
@@ -66,7 +67,7 @@ const CardStack = (props) => {
         scale: interpolate(
           translateX.value,
           [-hiddenTranslateX, 0, hiddenTranslateX],
-          [1, 0.9, 1]
+          [1.1, 0.9, 1.1]
         ),
       },
     
@@ -126,6 +127,7 @@ const CardStack = (props) => {
         const swipe = event.velocityX > 0 ? swipeRight : swipeLeft;     // if velocity is positive, swipeRight is called. if velocity is negative, swipeLeft is called
         swipe && runOnJS(swipe)(currentRestaurant);
 
+
       }
 
 
@@ -141,72 +143,72 @@ const CardStack = (props) => {
   return (
     <View style={styles.root}>
       {nextRestaurant && (
-      <View style={styles.nextCardContainer}>
-        <Animated.View style={[styles.animatedCard, nextCardStyle]}>   
-        {renderCard({ item: nextRestaurant })}
-        <Animated.Image 
-           source={Like} 
-           style={[styles.like, {left: 10}, likeStyle]}
-             resizeMode="contain" /> 
-          <Animated.Image
-           source={Nope}
-           style={[styles.like, {right: 10}, nopeStyle]}
-             resizeMode="contain"/>
-        </Animated.View>
-      </View>
+        <View style={styles.nextCardContainer}>
+          <Animated.View style={[styles.animatedCard, nextCardStyle]}>
+            {renderCard({ item: nextRestaurant })}
+            <Animated.Image
+              source={Like}
+              style={[styles.like, { left: 10 }, likeStyle]}
+              resizeMode="contain"
+            />
+            <Animated.Image
+              source={Nope}
+              style={[styles.like, { right: 10 }, nopeStyle]}
+              resizeMode="contain"
+            />
+          </Animated.View>
+        </View>
       )}
       {currentRestaurant && (
-      <GestureHandlerRootView>
-        <PanGestureHandler onGestureEvent={gestureHandler}>
-          <Animated.View style={[styles.animatedCard, cardStyle]}>
-            {renderCard({ item: currentRestaurant })}
-          </Animated.View>
-        </PanGestureHandler>
-      </GestureHandlerRootView>
-  )}
-   {currentRestaurant && (
+        <GestureHandlerRootView>
+          <PanGestureHandler onGestureEvent={gestureHandler}>
+            <Animated.View style={[styles.animatedCard, cardStyle]}>
+              {renderCard({ item: currentRestaurant })}
+            </Animated.View>
+          </PanGestureHandler>
+        </GestureHandlerRootView>
+      )}
+      {currentRestaurant && (
         <Animated.View style={[styles.animatedInfoCard, infoCardStyle]}>
-          {renderInfoCard({ item: currentRestaurant })}
+          {renderInfoCard({ item: restaurantInfo })}
         </Animated.View>
       )}
     </View>
   );
 };
 
-
-
 const styles = StyleSheet.create({
-  root: {                   // This is the view that contains the card  
+  root: {
     justifyContent: 'flex-end',
     alignItems: 'center',
-    width: '100%',
     flex: 1,
   },
   animatedCard: {
     width: '90%',
-    height: '70%',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    marginBottom: 15,
   },
   nextCardContainer: {
     ...StyleSheet.absoluteFillObject,
-    height: '79%',
+    height: '84.5%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   animatedInfoCard: {
-    width: '90%',
-    justifyContent: 'start',
+    width: '100%',
+    height: '30%',
+    aspectRatio: 1.4,
+    justifyContent: 'flex-start',
+   
   },
-
   like: {
-    width: 150,
-    height: 150,
+    width: '20%',
+    aspectRatio: 1,
     position: 'absolute',
-    top: 10,
-    zIndex: 1,  
-  }
-  
+    top: '3%',
+    zIndex: 1,
+  },
 });
 
 

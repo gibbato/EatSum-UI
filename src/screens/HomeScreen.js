@@ -39,8 +39,7 @@ const HomeScreen = () => {
           </View>
         )}
         restaurants={restaurantInfo}
-        renderInfoCard={({ item }) => 
-        <InfoCard restaurant={item} />}
+        renderInfoCard={({ item }) => <InfoCard restaurant={item} />}
       />
     </View>
   );
