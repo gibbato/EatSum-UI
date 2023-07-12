@@ -2,7 +2,7 @@
  * HomeScreen.js
  */
 import React, { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList, ScrollView } from 'react-native';
 import SplashScreen from './SplashScreen';
 
 import users from '../../assets/data/users';
@@ -12,6 +12,7 @@ import Card from '../components/RestaurantCard';
 import CardStack from '../components/CardStack';
 import InfoCard from '../components/InfoCard';
 
+
 const ROTATION = 60; // degrees
 const SWIPE_VELOCITY = 800; // pixels per second
 
@@ -19,21 +20,16 @@ const HomeScreen = () => {
   const [showSplash, setShowSplash] = React.useState(true);
 
   useEffect(() => {
-
-   { /* SPLASH SCREEN */}
-
     const timer = setTimeout(() => {
       setShowSplash(false);
     }, 2000);
 
-    return () => clearTimeout(timer); // Clean up the timer on unmount
+    return () => clearTimeout(timer); 
   }, []);
 
   if (showSplash) {
     return <SplashScreen />;
   }
-
-  { /* SPLASH SCREEN */}
 
   const swipeLeft = () => {
     console.warn('swipe left');
@@ -45,6 +41,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.pageContainer}>
+      
       <CardStack
         data={users}
         renderCard={({ item }) => (
@@ -53,7 +50,11 @@ const HomeScreen = () => {
           </View>
         )}
         restaurants={restaurantInfo}
-        renderInfoCard={({ item }) => <InfoCard restaurant={item} />}
+        renderInfoCard={({ item }) => (
+        <ScrollView>
+        <InfoCard restaurant={item} />
+        </ScrollView>
+        )}
       />
     </View>
   );
@@ -61,9 +62,8 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   pageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 1,
+    backgroundColor: '#1E1E1E',
   },
 });
 

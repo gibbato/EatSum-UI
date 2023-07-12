@@ -3,7 +3,7 @@ export default [
       id: '1',
       name: 'mcdonalds',
       cuisineType: 'Indian',
-      address: '123 food way',
+      address: '123 food way fjldsjfdslifjweiofjewoifvnrvkrenvren',
       reviews: 'eat our food hoe',
     },
     {
