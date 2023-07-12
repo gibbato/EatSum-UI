@@ -134,8 +134,9 @@ const CardStack = (props) => {
   });
 
   useEffect(() => {                          // resets the card stack when the currentIndex changes
-    translateX.value = 0;
+    translateX.value = withSpring(0);
     setNextIndex(currentIndex + 1);
+
   }, [currentIndex]);
   
 
