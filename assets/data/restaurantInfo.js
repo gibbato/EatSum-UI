@@ -3,8 +3,8 @@ export default [
       id: '1',
       name: 'mcdonalds',
       cuisineType: 'Indian',
-      address: '123 food way fjldsjfdslifjweiofjewoifvnrvkrenvren',
-      reviews: 'eat our food hoe',
+      address: '123 food way',
+      reviews: 'I will be the semicolons to your code',
     },
     {
       id: '2',
