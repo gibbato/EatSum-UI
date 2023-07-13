@@ -1,7 +1,7 @@
 /**
  * HomeScreen.js
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList, ScrollView } from 'react-native';
 import SplashScreen from './SplashScreen';
 
@@ -12,24 +12,20 @@ import Card from '../components/RestaurantCard';
 import CardStack from '../components/CardStack';
 import InfoCard from '../components/InfoCard';
 
-
 const ROTATION = 60; // degrees
 const SWIPE_VELOCITY = 800; // pixels per second
 
 const HomeScreen = () => {
-  const [showSplash, setShowSplash] = React.useState(true);
+  const [showSplash, setShowSplash] = useState(true);
+ 
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
     }, 2000);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, []);
-
-  if (showSplash) {
-    return <SplashScreen />;
-  }
 
   const swipeLeft = () => {
     console.warn('swipe left');
@@ -39,23 +35,39 @@ const HomeScreen = () => {
     console.warn('swipe right');
   };
 
+  const handleScroll = (event) => {
+    const { contentOffset } = event.nativeEvent;
+    setScrollPosition(contentOffset.y);
+  };
+
+
+
+  if (showSplash) {
+    return <SplashScreen />;
+  }
+
   return (
     <View style={styles.pageContainer}>
       
-      <CardStack
-        data={users}
-        renderCard={({ item }) => (
-          <View>
-            <Card restaurant={item} swipeLeft={swipeLeft} swipeRight={swipeRight} />
-          </View>
-        )}
-        restaurants={restaurantInfo}
-        renderInfoCard={({ item }) => (
-        <ScrollView>
-        <InfoCard restaurant={item} />
-        </ScrollView>
-        )}
-      />
+        <CardStack
+          data={users}
+          renderCard={({ item }) => (
+            <View>
+              <Card
+                restaurant={item}
+                swipeLeft={swipeLeft}
+                swipeRight={swipeRight}
+              />
+            </View>
+          )}
+          restaurants={restaurantInfo}
+          renderInfoCard={({ item }) => (
+        <ScrollView >
+              <InfoCard restaurant={item} />
+            </ScrollView>
+          )}
+        />
+      
     </View>
   );
 };
@@ -63,8 +75,9 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#FF6B6B',
   },
+ 
 });
 
 export default HomeScreen;

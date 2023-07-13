@@ -197,9 +197,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   animatedInfoCard: {
-    width: '100%',
+    width: '90%',
     height: '30%',
-    aspectRatio: 1.4,
     justifyContent: 'flex-start',
    
   },

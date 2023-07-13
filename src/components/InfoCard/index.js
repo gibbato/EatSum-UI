@@ -2,14 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 const InfoCard = ({ restaurant }) => {
-  const { name, cuisineType, address, reviews, dishes } = restaurant;
+  const { name, cuisineType, address, reviews, } = restaurant;
 
-  const renderDishItem = ({ item }) => (
-    <View style={styles.dishContainer}>
-      <Text style={styles.dishName}>{item.name}</Text>
-      <Text style={styles.dishDescription}>{item.description}</Text>
-    </View>
-  );
+  
 
   return (
     <View style={styles.container}>
@@ -19,13 +14,15 @@ const InfoCard = ({ restaurant }) => {
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.cuisineType}>{cuisineType}</Text>
           <Text style={styles.address}>{address}</Text>
+          
         </View>
-        <View style={styles.horizontalLine} />
+        <Text style={styles.reviewsTitle}>Rating:</Text>
+      
+     
       </View>
-      <View style={styles.reviewsContainer}>
-        <Text style={styles.reviewsTitle}>Reviews:</Text>
+       
         {/* Render your reviews content here */}
-      </View>
+     
     </View>
   );
 };
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
   },
@@ -89,21 +86,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: '#333333',
   },
-  dishContainer: {
-    marginBottom: 8,
-  },
-  dishName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  dishDescription: {
-    fontSize: 16,
-    color: '#666666',
-  },
-  dishesContainer: {
-    flexGrow: 1,
-  },
+ 
 });
 
 export default InfoCard;
