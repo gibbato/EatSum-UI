@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 const InfoCard = ({ restaurant }) => {
   const { name, cuisineType, address, reviews, } = restaurant;
 
-  
+
 
   return (
     <View style={styles.container}>
@@ -14,15 +14,15 @@ const InfoCard = ({ restaurant }) => {
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.cuisineType}>{cuisineType}</Text>
           <Text style={styles.address}>{address}</Text>
-          
+
         </View>
         <Text style={styles.reviewsTitle}>Rating:</Text>
-      
-     
+
+
       </View>
-       
-        {/* Render your reviews content here */}
-     
+
+      {/* Render your reviews content here */}
+
     </View>
   );
 };
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: '#333333',
   },
- 
+
 });
 
 export default InfoCard;

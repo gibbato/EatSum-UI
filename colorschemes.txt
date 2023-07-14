@@ -1,0 +1,27 @@
+Primary Color:
+Hex: #FF6B6B
+RGB: (255, 107, 107)
+Secondary Color:
+Hex: #FFD166
+RGB: (255, 209, 102)
+Accent Color:
+Hex: #06D6A0
+RGB: (6, 214, 160)
+Background Color:
+Hex: #F7F7F7
+RGB: (247, 247, 247)
+Text Color:
+Hex: #333333
+RGB: (51, 51, 51)
+Border Color:
+Hex: #E5E5E5
+RGB: (229, 229, 229)
+Highlight Color:
+Hex: #FFCE00
+RGB: (255, 206, 0)
+Success Color:
+Hex: #2EC4B6
+RGB: (46, 196, 182)
+Error Color:
+Hex: #EF476F
+RGB: (239, 71, 111)

@@ -3,7 +3,7 @@ export default [
       id: '1',
       name: 'mcdonalds',
       cuisineType: 'Indian',
-      address: '123 food way glrjfrefmreogirmgowigmwergomforemvmorevmreqf mwfm fweomfwefm wfmreogmremeroremvoervvmrevmrewvormvwobmtrobmtrowmevovmormvol',
+      address: '123 food way glrjfrefmreogirmgowigmwergomforemvmorevmreqf mwfm fweomfwefm wfmreogmremeroremvoervvmrevmrewvormvwobmtrobmtrowmevovmormvolglrjfrefmreogirmgowigmwergomforemvmorevmreqf mwfm fweomfwefm wfmreogmremeroremvoervvmrevmrewvormvwobmtrobmtrowmevovmormvolglrjfrefmreogirmgowigmwergomforemvmorevmreqf mwfm fweomfwefm wfmreogmremeroremvoervvmrevmrewvormvwobmtrobmtrowmevovmormvol',
       reviews: 'twas ight',
     },
     {

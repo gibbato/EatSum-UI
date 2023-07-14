@@ -170,10 +170,12 @@ const CardStack = (props) => {
         </GestureHandlerRootView>
       )}
       {currentRestaurant && (
-        <Animated.View style={[styles.animatedInfoCard, infoCardStyle]}>
-          {renderInfoCard({ item: restaurantInfo })}
-        </Animated.View>
-      )}
+ 
+      <Animated.View style={[styles.animatedInfoCard, infoCardStyle]}>
+        {renderInfoCard({ item: restaurantInfo })}
+      </Animated.View>
+   
+)}
     </View>
   );
 };
