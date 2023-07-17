@@ -6,25 +6,32 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  Alert,
 } from "react-native";
+import { login, register } from "../services/firebaseConfig";
+
+
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigation = useNavigation();
 
   const userForgotPassword = () => {
     // do something
   };
 
-  const userLogin = () => {
-    // do something
+  const loginUser = () => {
+      login(email, password)
+      
+     
   };
 
-  const userRegister = () => {
-    // do something
-    };
+  const createUser = () => {
+    register(email, password);
+  };
 
   return (
     <View style={styles.container}>
@@ -33,27 +40,26 @@ const Login = () => {
         <TextInput
           style={styles.inputText}
           placeholder="Enter Email"
-          placeholderTextColor="#003f5c"
-          onChangeText={(text) => setUser({ email: text })}
+          onChangeText={text => setEmail( text )}
         ></TextInput>
       </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
-          secureTextEntry
+          //secureTextEntry
           placeholder="Enter Password"
-          onChangeText={(text) => setUser({ password: text })}
+          onChangeText={text => setPassword( text )}
         ></TextInput>
       </View>
       <TouchableOpacity onPress={userForgotPassword}>
         <Text style={styles.forgot}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={userLogin} style={styles.loginBtn}>
+      <TouchableOpacity onPress={loginUser} style={styles.loginBtn}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={userRegister}>
+      <TouchableOpacity onPress={createUser}>
         <Text style={styles.loginText}>REGISTER</Text>
       </TouchableOpacity>
     </View>

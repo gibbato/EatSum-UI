@@ -3,7 +3,13 @@
  */
 
 import { AppRegistry } from 'react-native';
-import Login from './src/screens/Login';
+import AppNavigation from './src/navigation/AppNavigation';
 import { name as appName } from './app.json';
 
-AppRegistry.registerComponent(appName, () => Login);
+
+
+const EatSum = () => {
+    return <AppNavigation />;
+};
+
+AppRegistry.registerComponent(appName, () => EatSum);

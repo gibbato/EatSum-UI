@@ -16,15 +16,9 @@ const ROTATION = 60; // degrees
 const SWIPE_VELOCITY = 800; // pixels per second
 
 const HomeScreen = () => {
-  const [showSplash, setShowSplash] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+   
 
   const swipeLeft = () => {
     console.warn("swipe left");
@@ -39,9 +33,7 @@ const HomeScreen = () => {
     setScrollPosition(contentOffset.y);
   };
 
-  if (showSplash) {
-    return <SplashScreen />;
-  }
+
 
   return (
     <View style={styles.pageContainer}>

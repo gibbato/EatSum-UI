@@ -1,9 +1,22 @@
 import React, {useEffect} from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Logo from '../../assets/images/EatSumLogo.png'
 
 const SplashScreen = () => {
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate('Login');
+        }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
    
 
     return (
