@@ -1,23 +1,18 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import SplashScreen from '../screens/SplashScreen';
-import LoginScreen from '../screens/Login';
-import HomeScreen from '../screens/HomeScreen';
+import React, { useContext } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-const Stack = createStackNavigator();
+import AuthStack from "./AuthStack";
+import AppStack from "./AppStack";
+import { AuthContext } from "../context/AuthContext";
 
-const AppNavigation = () => {
+function AppNavigation() {
+  const { isLoading, user } = useContext(AuthContext);
+
   return (
     <NavigationContainer>
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-  
-      <Stack.Screen name="Home" component={HomeScreen} />
-    </Stack.Navigator>
-  </NavigationContainer>
+      {user ? <AppStack /> : <AuthStack />}
+    </NavigationContainer>
   );
-};
+}
 
 export default AppNavigation;

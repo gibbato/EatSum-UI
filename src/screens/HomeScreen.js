@@ -2,8 +2,17 @@
  * HomeScreen.js
  */
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Button,
+} from "react-native";
 import SplashScreen from "./SplashScreen";
+
+import { signout } from "../services/firebaseAuth";
 
 import users from "../../assets/data/users";
 import restaurantInfo from "../../assets/data/restaurantInfo";
@@ -16,10 +25,6 @@ const ROTATION = 60; // degrees
 const SWIPE_VELOCITY = 800; // pixels per second
 
 const HomeScreen = () => {
-
-
-   
-
   const swipeLeft = () => {
     console.warn("swipe left");
   };
@@ -28,15 +33,11 @@ const HomeScreen = () => {
     console.warn("swipe right");
   };
 
-  const handleScroll = (event) => {
-    const { contentOffset } = event.nativeEvent;
-    setScrollPosition(contentOffset.y);
-  };
-
-
-
   return (
-    <View style={styles.pageContainer}>
+    <SafeAreaView style={styles.pageContainer}>
+      <View>
+        <Button onPress={signout} title="signout"></Button>
+      </View>
       <CardStack
         data={users}
         renderCard={({ item }) => (
@@ -55,14 +56,14 @@ const HomeScreen = () => {
           </ScrollView>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    backgroundColor: "#FF6B6B",
+    backgroundColor: "#06D6A0",
   },
 });
 

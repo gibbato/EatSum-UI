@@ -8,25 +8,21 @@ import {
   Button,
   Alert,
 } from "react-native";
-import { login } from "../services/firebaseAuth";
+import { register } from "../services/firebaseAuth";
 
 import { AuthContext } from "../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import AuthButton from "../components/AuthButton";
 
-const Login = () => {
+const Register = () => {
   const { setUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
 
-  const userForgotPassword = () => {
-    // do something
-  };
-
-  const loginUser = () => {
-    login(email, password)
+  const createUser = () => {
+    register(email, password)
       .then((user) => {
         setUser(user);
       })
@@ -35,13 +31,13 @@ const Login = () => {
       });
   };
 
-  const navigateToRegister = () => {
-    navigation.navigate("Register");
+  const navigateToLogin = () => {
+    navigation.navigate("Login");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Login</Text>
+      <Text style={styles.heading}>Register</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.inputText}
@@ -57,11 +53,10 @@ const Login = () => {
           onChangeText={(text) => setPassword(text)}
         ></TextInput>
       </View>
+      <AuthButton onPress={createUser} text="Register" />
 
-      <AuthButton onPress={loginUser} text="Find Food! -->" />
-
-      <TouchableOpacity onPress={navigateToRegister}>
-        <Text>Join Our Cult!</Text>
+      <TouchableOpacity onPress={navigateToLogin}>
+        <Text>Back to Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -102,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Register;
