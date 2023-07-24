@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -13,6 +13,8 @@ import { login } from "../services/firebaseAuth";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import AuthButton from "../components/AuthButton";
+
+import { getLocation } from '../utils/geolocation';
 
 const Login = () => {
   const { setUser } = useContext(AuthContext);
@@ -38,6 +40,23 @@ const Login = () => {
   const navigateToRegister = () => {
     navigation.navigate("Register");
   };
+
+
+ 
+    useEffect(() => {
+      // Call the getLocation() function and handle the result
+      getLocation()
+        .then(position => {
+          // Handle the position data
+          console.log('Latitude: ', position.coords.latitude);
+          console.log('Longitude: ', position.coords.longitude);
+        })
+        .catch(error => {
+          // Handle the error
+          console.error('Error getting location: ', error);
+        });
+    }, []);
+
 
   return (
     <View style={styles.container}>

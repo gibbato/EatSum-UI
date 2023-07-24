@@ -7,6 +7,7 @@ export const login = (email, password) => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("User account signed in! ", user);
+    
         resolve(user);
       })
       .catch((error) => {

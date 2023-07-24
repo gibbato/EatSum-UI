@@ -17,6 +17,8 @@ import { signout } from "../services/firebaseAuth";
 import users from "../../assets/data/users";
 import restaurantInfo from "../../assets/data/restaurantInfo";
 
+import { fetchRestaurants } from "../services/firestore";
+
 import Card from "../components/RestaurantCard";
 import CardStack from "../components/CardStack";
 import InfoCard from "../components/InfoCard";
@@ -33,13 +35,28 @@ const HomeScreen = () => {
     console.warn("swipe right");
   };
 
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    const loadRestaurants = async () => {
+      try {
+      const fetchedRestaurants = await fetchRestaurants();
+      setRestaurants(fetchedRestaurants);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    loadRestaurants();
+  }, []);
+  
+
   return (
     <SafeAreaView style={styles.pageContainer}>
       <View>
         <Button onPress={signout} title="signout"></Button>
       </View>
       <CardStack
-        data={users}
+        data={restaurants}
         renderCard={({ item }) => (
           <View>
             <Card

@@ -6,6 +6,10 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>EatSum</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>YOUR_WHEN_IN_USE_DESCRIPTION</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>YOUR_ALWAYS_AND_WHEN_IN_USE_DESCRIPTION</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

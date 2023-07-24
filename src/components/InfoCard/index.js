@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const InfoCard = ({ restaurant }) => {
-  const { name, cuisineType, address, reviews, } = restaurant;
+  const { name, cuisineType, address, reviews } = restaurant;
 
 
 
@@ -16,7 +16,7 @@ const InfoCard = ({ restaurant }) => {
           <Text style={styles.address}>{address}</Text>
 
         </View>
-        <Text style={styles.reviewsTitle}>Rating:</Text>
+        <Text style={styles.reviewsTitle}>Rating: {reviews}</Text>
 
 
       </View>

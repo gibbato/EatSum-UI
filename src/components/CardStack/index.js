@@ -31,7 +31,7 @@ const CardStack = (props) => {
 
   const currentRestaurant = data[currentIndex];
   const nextRestaurant = data[nextIndex];
-  const restaurantInfo = restaurants[currentIndex];
+
 
 
   const { width: screenWidth } = useWindowDimensions();
@@ -172,7 +172,7 @@ const CardStack = (props) => {
       {currentRestaurant && (
  
       <Animated.View style={[styles.animatedInfoCard, infoCardStyle]}>
-        {renderInfoCard({ item: restaurantInfo })}
+        {renderInfoCard({ item: currentRestaurant })}
       </Animated.View>
    
 )}

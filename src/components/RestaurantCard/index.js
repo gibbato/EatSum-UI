@@ -1,8 +1,10 @@
 import React from "react";
 import { Text, View, Image, ImageBackground, StyleSheet } from "react-native";
 
-const Card = (props) => {
-  const { name, image, bio } = props.restaurant;
+const Card = ({restaurant}) => {
+  const { name, image, bio } = restaurant;
+
+ 
 
   return (
     <View style={styles.card}>
