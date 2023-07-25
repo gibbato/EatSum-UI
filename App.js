@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect } from "react";
 
 import AppNavigation from "./src/navigation/AppNavigation";
-import { initializeFirebase } from './src/services/firebaseConfig';
+import { initializeFirebase } from "./src/services/firebaseConfig";
 
-import { AuthProvider } from './src/context/AuthContext';
+import { AuthProvider } from "./src/context/AuthContext";
+import { LocationProvider } from "./src/context/LocationContext";
 
 function App() {
+  useEffect(() => {
+    initializeFirebase();
+  });
 
-    useEffect(() => {
-        initializeFirebase();
-    })
-
-    return (
-       <AuthProvider>
+  return (
+    <AuthProvider>
+      <LocationProvider>
         <AppNavigation />
-         </AuthProvider>
-    );
+      </LocationProvider>
+    </AuthProvider>
+  );
 }
 
 export default App;

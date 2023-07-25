@@ -14,7 +14,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import AuthButton from "../components/AuthButton";
 
-import getCurrentPosition, { getLocation } from '../utils/geolocation';
+import getCurrentPosition from '../utils/geolocation';
 
 const Login = () => {
   const { setUser } = useContext(AuthContext);
@@ -44,7 +44,7 @@ const Login = () => {
 
  
     useEffect(() => {
-      // Call the getCurrentLocation() function and handle the result
+      // Call the getCurrentPosition() function and handle the result
       getCurrentPosition()
         .then(position => {
           // Handle the position data
