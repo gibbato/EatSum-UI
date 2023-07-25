@@ -1,6 +1,9 @@
 /**
  * HomeScreen.js
+ *  This component represents the main screen of the app, displaying a stack of restaurant cards
+ * that users can swipe left or right to interact with. It also includes an option to sign out.
  */
+
 import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
@@ -35,8 +38,10 @@ const HomeScreen = () => {
     console.warn("swipe right");
   };
 
+    // State to store fetched restaurants data.
   const [restaurants, setRestaurants] = useState([]);
 
+  // Fetch restaurants data from Firestore.
   useEffect(() => {
     const loadRestaurants = async () => {
       try {
@@ -52,9 +57,11 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.pageContainer}>
+      {/* Sign out button */}
       <View>
         <Button onPress={signout} title="signout"></Button>
       </View>
+       {/* CardStack: Stack of swipeable restaurant cards */}
       <CardStack
         data={restaurants}
         renderCard={({ item }) => (
@@ -69,6 +76,7 @@ const HomeScreen = () => {
         restaurants={restaurantInfo}
         renderInfoCard={({ item }) => (
           <ScrollView style={styles.infoCard}>
+             {/* InfoCard: Displays detailed information about the restaurant */}
             <InfoCard restaurant={item} />
           </ScrollView>
         )}

@@ -5,7 +5,7 @@ export default function getCurrentPosition() {
     Geolocation.getCurrentPosition(
       position => resolve(position),
       error => reject(error),
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+      { enableHighAccuracy: true, maximumAge: 10000 },
     );
   });
 }
