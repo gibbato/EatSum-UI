@@ -1,14 +1,19 @@
+// This component defines the navigation stack for authenticated routes in the application.
+
 import React, { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import SplashScreen from "../screens/SplashScreen";
-import LoginScreen from "../screens/Login";
-import HomeScreen from "../screens/HomeScreen";
-import Register from "../screens/Register";
 
+// Import relevant screens for the navigation stack.
+import HomeScreen from "../screens/HomeScreen";
+
+
+// Create a native stack navigator instance.
 const Stack = createNativeStackNavigator();
 
+// Define the AppStack component, which represents the authenticated routes in the app.
 const AppStack = () => {
   return (
+      // Return the stack navigator with the specified screens and screen options.
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>

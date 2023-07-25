@@ -42,7 +42,7 @@ const Login = () => {
   };
 
 
- 
+ /*
     useEffect(() => {
       // Call the getLocation() function and handle the result
       getLocation()
@@ -57,7 +57,7 @@ const Login = () => {
         });
     }, []);
 
-
+*/
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Login</Text>

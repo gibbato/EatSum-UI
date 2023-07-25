@@ -1,11 +1,13 @@
+// This component defines the navigation stack for unauthenticated routes in the application.
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+// Import relevant screens for the navigation stack.
 import SplashScreen from "../screens/SplashScreen";
 import LoginScreen from "../screens/Login";
-import HomeScreen from "../screens/HomeScreen";
 import Register from "../screens/Register";
 
+// Create a native stack navigator instance.
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => {
@@ -13,6 +15,7 @@ const AuthStack = () => {
   //  return <SplashScreen />;
   //}
 
+  // Define the AuthStack component, which represents the unauthenticated routes in the app.
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {/* ONBOARDING SCREEN EVENTUALLY */}
