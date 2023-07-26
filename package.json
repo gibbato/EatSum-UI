@@ -14,7 +14,7 @@
     "@expo/vector-icons": "^13.0.0",
     "@firebase/app": "^0.9.14",
     "@firebase/auth": "^1.0.0",
-    "@react-native-async-storage/async-storage": "^1.19.0",
+    "@react-native-async-storage/async-storage": "^1.19.1",
     "@react-native-community/geolocation": "^3.0.6",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/analytics": "^18.2.0",
