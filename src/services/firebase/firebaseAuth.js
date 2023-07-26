@@ -36,5 +36,6 @@ export const register = (email, password) => {
 export const signout = () => {
   auth()
     .signOut()
-    .then(() => console.log("signed out!"));
+    .then(() => {
+      console.log("signed out!")});
 };

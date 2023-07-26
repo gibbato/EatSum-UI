@@ -11,7 +11,7 @@ const getNearbyRestaurants = async (latitude, longitude) => {
         Authorization: `Bearer ${API_KEY}`,
       },
     });
-
+    console.log('API CALLED')
     return response.data.businesses;
   } catch (error) {
     console.error('Error fetching nearby restaurants:', error);

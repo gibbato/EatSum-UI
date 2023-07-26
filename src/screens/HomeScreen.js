@@ -4,6 +4,7 @@
  * that users can swipe left or right to interact with. It also includes an option to sign out.
  */
 
+//max is 20 in the cardstack rn
 import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
@@ -74,7 +75,7 @@ const HomeScreen = () => {
     try {
       // Fetch nearby restaurants using geolocation
       const position = await getCurrentPosition();
-
+ﬁ
       console.log('Latitude: ', position.coords.latitude);
         console.log('Longitude: ', position.coords.longitude);
 

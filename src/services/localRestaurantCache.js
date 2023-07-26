@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 // Store entire list of restaurants in AsyncStorage
 export const storeRestaurantData = async (restaurantData) => {
     try {
@@ -34,4 +35,15 @@ export const storeRestaurantData = async (restaurantData) => {
       return null;
     }
   };
+
+  // Function to clear the cache data
+const clearCache = async () => {
+  try {
+    await AsyncStorage.clear();
+    console.log('Cache data cleared successfully.');
+  } catch (error) {
+    console.error('Error clearing cache:', error);
+  }
+};
   
+
