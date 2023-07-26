@@ -8,13 +8,11 @@ import {
   Button,
   Alert,
 } from "react-native";
-import { login } from "../services/firebaseAuth";
-
+import { login } from "../services/firebase/firebaseAuth";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import AuthButton from "../components/AuthButton";
 
-import getCurrentPosition from '../utils/geolocation';
 
 const Login = () => {
   const { setUser } = useContext(AuthContext);
@@ -43,19 +41,7 @@ const Login = () => {
 
 
  
-    useEffect(() => {
-      // Call the getCurrentPosition() function and handle the result
-      getCurrentPosition()
-        .then(position => {
-          // Handle the position data
-          console.log('Latitude: ', position.coords.latitude);
-          console.log('Longitude: ', position.coords.longitude);
-        })
-        .catch(error => {
-          // Handle the error
-          console.error('Error getting location: ', error);
-        });
-    }, []);
+   
 
 
   return (

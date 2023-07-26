@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import AppNavigation from "./src/navigation/AppNavigation";
-import { initializeFirebase } from "./src/services/firebaseConfig";
+import { initializeFirebase } from "./src/services/firebase/firebaseConfig";
 
 import { AuthProvider } from "./src/context/AuthContext";
 import { LocationProvider } from "./src/context/LocationContext";

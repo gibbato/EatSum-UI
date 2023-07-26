@@ -15,12 +15,14 @@ import {
 } from "react-native";
 import SplashScreen from "./SplashScreen";
 
-import { signout } from "../services/firebaseAuth";
+import { signout } from "../services/firebase/firebaseAuth";
 
 import users from "../../assets/data/users";
 import restaurantInfo from "../../assets/data/restaurantInfo";
+import getCurrentPosition from '../utils/geolocation';
 
-import { fetchRestaurants } from "../services/firestore";
+
+import { fetchRestaurants } from "../services/firebase/firestore";
 
 import Card from "../components/RestaurantCard";
 import CardStack from "../components/CardStack";
@@ -30,6 +32,7 @@ const ROTATION = 60; // degrees
 const SWIPE_VELOCITY = 800; // pixels per second
 
 const HomeScreen = () => {
+
   const swipeLeft = () => {
     console.warn("swipe left");
   };
@@ -40,6 +43,23 @@ const HomeScreen = () => {
 
     // State to store fetched restaurants data.
   const [restaurants, setRestaurants] = useState([]);
+
+
+  useEffect(() => {
+    // Call the getCurrentPosition() function and handle the result
+    getCurrentPosition()
+      .then(position => {
+        // Handle the position data
+        console.log('Latitude: ', position.coords.latitude);
+        console.log('Longitude: ', position.coords.longitude);
+
+      })
+      .catch(error => {
+        // Handle the error
+        console.error('Error getting location: ', error);
+      });
+  }, []);
+
 
   // Fetch restaurants data from Firestore.
   useEffect(() => {
@@ -53,6 +73,8 @@ const HomeScreen = () => {
     };
     loadRestaurants();
   }, []);
+
+
   
 
   return (

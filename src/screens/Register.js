@@ -8,7 +8,7 @@ import {
   Button,
   Alert,
 } from "react-native";
-import { register } from "../services/firebaseAuth";
+import { register } from "../services/firebase/firebaseAuth";
 
 import { AuthContext } from "../context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
