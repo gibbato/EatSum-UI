@@ -69,7 +69,6 @@ const HomeScreen = () => {
     checkAsyncStorage();
   }, []);
 
-
   // Function to fetch data and store it in AsyncStorage
   const fetchAndStoreData = async () => {
     try {
