@@ -23,6 +23,6 @@ const AuthStack = () => {
       <Stack.Screen name="Register" component={Register} />
     </Stack.Navigator>
   );
-};
+  };
 
 export default AuthStack;
