@@ -37,5 +37,6 @@ export const signout = () => {
   auth()
     .signOut()
     .then(() => {
+      clearCache();
       console.log("signed out!")});
 };
