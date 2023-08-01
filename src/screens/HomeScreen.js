@@ -116,7 +116,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    backgroundColor: "#06D6A0",
+    backgroundColor: "#F7F7F7",
   },
 });
 

@@ -2,16 +2,17 @@ import React from "react";
 import { Text, View, Image, ImageBackground, StyleSheet } from "react-native";
 
 const Card = ({restaurant}) => {
-  const { name, image, bio } = restaurant;
+  const { name, image_url, price } = restaurant;
 
  
 
   return (
     <View style={styles.card}>
-      <ImageBackground source={{ uri: image }} style={styles.image}>
+      <ImageBackground source={{ uri: image_url }} style={styles.image}>
+        <View style={styles.imageOverlay} />
         <View style={styles.cardInner}>
           <Text style={styles.name}>{name}</Text>
-          <Text style={styles.bio}>{bio}</Text>
+          <Text style={styles.bio}>{price}</Text>
         </View>
       </ImageBackground>
     </View>
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     width: "100%",
     aspectRatio: 0.75,
     borderRadius: 10,
-    backgroundColor: "#fefefe",
+    backgroundColor: "#FFFFFF",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -52,6 +53,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "white",
     lineHeight: 25,
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject, // Cover the entire image
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent black overlay
   },
 });
 

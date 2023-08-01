@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const InfoCard = ({ restaurant }) => {
-  const { name, cuisineType, address, reviews } = restaurant;
+  const { name, phone, display_address, rating } = restaurant;
 
 
 
@@ -12,11 +12,11 @@ const InfoCard = ({ restaurant }) => {
       <View style={styles.content}>
         <View style={styles.textContainer}>
           <Text style={styles.name}>{name}</Text>
-          <Text style={styles.cuisineType}>{cuisineType}</Text>
-          <Text style={styles.address}>{address}</Text>
+          <Text style={styles.phone}>{phone}</Text>
+          <Text style={styles.address}>{}</Text>
 
         </View>
-        <Text style={styles.reviewsTitle}>Rating: {reviews}</Text>
+        <Text style={styles.reviewsTitle}>Rating: {rating}</Text>
 
 
       </View>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7',
     padding: 16,
     borderRadius: 8,
+    baclgroundColor: '#FFFFFF',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -59,8 +60,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
+    color: '#333333',
   },
-  cuisineType: {
+  phone: {
     fontSize: 18,
     marginBottom: 4,
     color: '#666666',
