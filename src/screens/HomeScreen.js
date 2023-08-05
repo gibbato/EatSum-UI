@@ -53,6 +53,7 @@ const HomeScreen = () => {
  useEffect(() => {
   const loadRestaurants = async () => {
     try {
+
       const cachedRestaurants = await getCachedData();
       setRestaurants(cachedRestaurants);
      
@@ -85,10 +86,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.pageContainer}>
-      {/* Sign out button */}
-      <View>
-        <Button onPress={signout} title="signout"></Button>
-      </View>
+    
        {/* CardStack: Stack of swipeable restaurant cards */}
       <CardStack
         data={restaurants}
@@ -109,7 +107,9 @@ const HomeScreen = () => {
           </ScrollView>
         )}
       />
+      
     </SafeAreaView>
+    
   );
 };
 

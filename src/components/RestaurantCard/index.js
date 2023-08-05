@@ -2,9 +2,10 @@ import React from "react";
 import { Text, View, Image, ImageBackground, StyleSheet } from "react-native";
 
 const Card = ({restaurant}) => {
-  const { name, image_url, price } = restaurant;
+  const { name, image_url, price, distance } = restaurant;
 
- 
+ const distanceInMiles = distance * 0.000621371
+ const formattedDistance = distanceInMiles.toFixed(2);
 
   return (
     <View style={styles.card}>
@@ -12,7 +13,7 @@ const Card = ({restaurant}) => {
         <View style={styles.imageOverlay} />
         <View style={styles.cardInner}>
           <Text style={styles.name}>{name}</Text>
-          <Text style={styles.bio}>{price}</Text>
+          <Text style={styles.bio}>{price}   {formattedDistance} mi</Text>
         </View>
       </ImageBackground>
     </View>

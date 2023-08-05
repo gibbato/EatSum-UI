@@ -11,6 +11,9 @@ import AppStack from "./AppStack";
 import { AuthContext } from "../context/AuthContext";
 import SplashScreen from "../screens/SplashScreen";
 
+import TopTabNavigator from './TopTabNavigator';
+
+
 function AppNavigation() {
   // Retrieve the authentication state from the AuthContext using the useContext hook.
   const { isLoading, user } = useContext(AuthContext);
@@ -22,7 +25,9 @@ function AppNavigation() {
 
   return (
     <NavigationContainer>
+      <TopTabNavigator>
       {isLoading ? <SplashScreen /> : user ? <AppStack /> : <AuthStack />}
+      </TopTabNavigator>
     </NavigationContainer>
   );
 }

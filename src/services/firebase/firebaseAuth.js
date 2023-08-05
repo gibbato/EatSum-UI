@@ -1,4 +1,5 @@
 import auth from "@react-native-firebase/auth";
+import {clearCache} from '../localRestaurantCache';
 
 export const login = (email, password) => {
   return new Promise((resolve, reject) => {
@@ -37,6 +38,5 @@ export const signout = () => {
   auth()
     .signOut()
     .then(() => {
-      clearCache();
       console.log("signed out!")});
 };
