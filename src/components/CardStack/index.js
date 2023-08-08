@@ -67,7 +67,7 @@ const CardStack = (props) => {
         scale: interpolate(
           translateX.value,
           [-hiddenTranslateX, 0, hiddenTranslateX],
-          [1.1, 0.9, 1.1]
+          [1.0, 0.9, 1.0]
         ),
       },
     
@@ -134,7 +134,7 @@ const CardStack = (props) => {
   });
 
   useEffect(() => {                          // resets the card stack when the currentIndex changes
-    translateX.value = withSpring(0);
+    translateX.value = 0;
     setNextIndex(currentIndex + 1);
 
   }, [currentIndex]);
@@ -191,10 +191,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginBottom: 15,
+    
   },
   nextCardContainer: {
     ...StyleSheet.absoluteFillObject,
-    height: '75%',
+    height: '71%',
     justifyContent: 'center',
     alignItems: 'center',
   },

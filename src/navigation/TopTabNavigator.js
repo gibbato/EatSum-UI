@@ -1,34 +1,76 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { Image, SafeAreaView, StyleSheet } from 'react-native';
 
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import { SafeAreaView, StyleSheet } from 'react-native';
+
+import HomeIcon from '../../assets/images/HomeIcon.png';
+import ProfileIcon from '../../assets/images/ProfileIcon.png';
 
 const Tab = createMaterialTopTabNavigator();
 
 function TopTabNavigator() {
   return (
- <SafeAreaView style={{flex: 1}}>
-    <Tab.Navigator style={styles.backgroundColor}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Tab.Navigator
+        swipeEnabled={false}
+        tabBarOptions={{
+          style: styles.tabBar,
+          showIcon: true,
+          showLabel: false,
+          iconStyle: styles.iconStyle,
+          activeTintColor: 'red',
+          inactiveTintColor: 'gray',
+          indicatorStyle: {
+            backgroundColor: 'red',
+            width: '1%',
+            marginLeft: '14%',
+            marginRight: '14%',
+           opacity: 0.5,
+           height: '3%',
+          },
+          style: {
+            backgroundColor: '#F7F7F7',
+          },
+          
+        }}
+      >
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Image source={HomeIcon} style={[styles.icon, { tintColor: color }]} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Image source={ProfileIcon} style={[styles.icon, { tintColor: color }]} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
     </SafeAreaView>
-   
   );
 }
 
 const styles = StyleSheet.create({
-  pageContainer: {
-     backgroundColor: 'rgba(255, 255, 255, 0.5)', //transparent background
-     showIcon: true,  // Show icons instead of names
-     iconStyle: { width: 30, height: 30 },
-     activeTintColor: 'blue',
-      inactiveTintColor: 'gray',
-
-
-
+  tabBar: {
+    backgroundColor: '#F7F7F7',
+  },
+  iconStyle: {
+    width: 40,
+    height: 40,
+  },
+  icon: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain', // Adjust the image's content mode
   },
 });
 
